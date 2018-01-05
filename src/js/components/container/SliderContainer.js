@@ -1,40 +1,46 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-
-import SlidePicture from "../presentational/SlidePicture";
-const containerStyle = {
-  padding: "0.5rem",
-  fontSize: "1.2rem"
-}
+import Slider from "../presentational/Slider";
+import SliderCommands from "./SliderCommands";
 
 class SliderContainer extends Component {
 
   constructor() {
     super();
     this.state = {
-      currentImage: "none"
+      currentImage: "none",
+      alt:"",
+      title:""
     };
   }
 
   componentDidMount(){
     this.setState ({ status: "loaded"});
     var that = this;
-    this.setState ({ currentImage: "http://www.heresias.org/blog/wp-content/uploads/2017/02/simba.png"});
+    //
+    this.setState ({ 
+      currentImage: "http://www.heresias.org/blog/wp-content/uploads/2017/02/simba.png" ,
+      title : "titulo",
+      alt: 'alt'
+    });
   }
 
   render() {
-    const { currentImage } = this.state;
+    const { currentImage, title, alt } = this.state;
     return (
-      <div id="slider-body" style={containerStyle}>
-        <SlidePicture 
+      <div className="slider">
+        <SliderCommands />
+        <Slider 
           currentImage = {currentImage}
+          title = {title}
+          alt = {alt}
         />
       </div>
     );
   }
 }
 
-const wrapper = document.getElementById("slide-container");
+const wrapper = document.getElementById("slider-container");
 wrapper ? ReactDOM.render(<SliderContainer />, wrapper) : false;
 
 
