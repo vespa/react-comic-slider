@@ -1,37 +1,44 @@
-    const path = require("path");
-    const HtmlWebPackPlugin = require("html-webpack-plugin");
-    module.exports = {
-      entry: ["./src/js/app.js"],
-      output: {
-        path: path.resolve(__dirname, "dist"),
-        filename: "js/[name].js"
+const path = require("path");
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+module.exports = {
+  entry: ["./src/js/app.js"],
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "js/[name].js"
+  },
+  devServer: {
+    contentBase: "./dist"
+  },
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader']          
+
       },
-      devServer: {
-        contentBase: "./dist"
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader"
+        }
       },
-      module: {
-        rules: [
+      {
+        test: /\.html$/,
+        use: [
           {
-            test: /\.js$/,
-            exclude: /node_modules/,
-            use: {
-              loader: "babel-loader"
-            }
-          },
-          {
-            test: /\.html$/,
-            use: [
-              {
-                loader: "html-loader"
-              }
-            ]
+            loader: "html-loader"
           }
         ]
-      },
-      plugins: [
-        new HtmlWebPackPlugin({
-          template: "./src/index.html",
-          filename: "./index.html"
-        })
-      ]
-    };
+      }
+    ]
+  },
+  plugins: [
+    new HtmlWebPackPlugin({
+      template: "./src/index.html",
+      filename: "./index.html"
+    }),
+    //new UglifyJsPlugin()
+  ]
+};
