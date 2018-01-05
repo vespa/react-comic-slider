@@ -42,7 +42,4 @@ class SliderContainer extends Component {
 
 const wrapper = document.getElementById("slider-container");
 wrapper ? ReactDOM.render(<SliderContainer />, wrapper) : false;
-
-
-
 export default SliderContainer;

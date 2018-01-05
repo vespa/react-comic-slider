@@ -1,37 +1,39 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import Slider from "../presentational/SliderAction";
-
+import SliderAction from "../presentational/SliderAction";
 const path = require("path");
-
 class SliderCommands extends Component {
   constructor() {
     super();
-    // this.state = {
-
-    // };
   }
+
   back(){
-
+    alert("hey")
   }
+
   createButtons(){
     return [
       {
         text: "voltar",
         action : this.back
+      },
+      {
+        text: "avançar",
+        action : this.back
       }
     ];
   }
-  componentDidMount(){
 
-  }
-
-  render() {
-    //const { currentImage, title, alt } = this.state;
-    return (
-      <div>
-        commandos
+  componentDidMount(){}
   
+  render() {
+    const commands = this.createButtons();
+    let counter = 0;
+       return (
+      <div>
+        {commands.map(( { text, action } ) =>
+          <SliderAction text={text} key={counter++} action={action}/>
+        )}
       </div>
     );
   }
