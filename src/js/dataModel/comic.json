@@ -1,43 +1,90 @@
-var ComicData = {
-    id : 1,
-    title: "title",
-    description: "general description",
-    categories: [
-       
-        "category2"
-    ],
-    authors:[
+{
+    "totalResults" : 9999,
+    "currentPage":"2",
+    "limit":10,
+    "results":[
         {
-            name: "author 1",
-            description: "author 1",
-        },      
-        {
-            name: "author 2",
-            description: "author 2",
-        }
-    ],
-    pages: [
-        {
-            img: "123.jpg", 
-            position: 1, 
-            scenes: [
+            "id":1,
+            "title":"title",
+            "slug":"name-of-file",
+            "uri" :"http://www.heresias.org/blog/wp-content/uploads/2017/02/asmie-768x570.png", 
+            "description":"general description",
+            "categories":[
+                "category2"
+            ],
+            "authors":[
                 {
-                    description: "about the scene",
-                    dialogs : [
+                    "name":"author 1",
+                    "description":"author 1"
+                },
+                {
+                    "name":"author 2",
+                    "description":"author 2"
+                }
+            ],
+            "pages":[
+                {
+                    "img":"123.jpg",
+                    "position":1,
+                    "scenes":[
                         {
-                            "char" : "",
-                            "text" : ""
-                        },
+                            "description":"about the scene",
+                            "dialogs":[
+                                {
+                                    "char":"",
+                                    "text":""
+                                },
+                                {
+                                    "char":"",
+                                    "text":""
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id":2,
+            "slug":"name-of-file2",
+            "uri" :"http://www.heresias.org/blog/wp-content/uploads/2017/02/simba.png",
+            "title":"title",
+            "description":"general description",
+            "categories":[
+                "category2"
+            ],
+            "authors":[
+                {
+                    "name":"author 1",
+                    "description":"author 1"
+                },
+                {
+                    "name":"author 2",
+                    "description":"author 2"
+                }
+            ],
+            "pages":[
+                {
+                    "img":"123.jpg",
+                    "position":1,
+                    "scenes":[
                         {
-                            "char" : "",
-                            "text" : ""
-                        },
+                            "description":"about the scene",
+                            "dialogs":[
+                                {
+                                    "char":"",
+                                    "text":""
+                                },
+                                {
+                                    "char":"",
+                                    "text":""
+                                }
+                            ]
+                        }
                     ]
                 }
             ]
         }
-    ]   
-};
-
-module.exports = ComicData;
+    ]
+}
 

@@ -1,4 +1,6 @@
-var fakeApiPath = "/dataModel/"
+import comic from '../../../js/dataModel/comic.json';
+
 var fakeApi = {
-	"comic" : fakeApiPath+"comic.json"
+	"comic" :comic
 }
+module.exports = fakeApi;

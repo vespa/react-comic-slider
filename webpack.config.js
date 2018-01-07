@@ -12,6 +12,13 @@ module.exports = {
   },
   module: {
     rules: [
+      { 
+        test: /\.json$/, 
+        loader: "file-loader",
+        options: {
+          name: '[path][name].[ext]?[hash]',
+        }   
+      },
       {
         test: /\.scss$/,
         use: ['style-loader', 'css-loader', 'sass-loader']          
