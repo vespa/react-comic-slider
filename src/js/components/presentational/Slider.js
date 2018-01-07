@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 
 const PrintImage = ({imageOn, alt, title}) => {
-  return (imageOn === 'none')? 'Loading...' : <img src={imageOn} alt={alt} title={title} />
+  return (imageOn === "")? 'Loading...' : <img src={imageOn} alt={alt} title={title} />
 }
 
 const SlidePicture = ({ currentImage, alt, title}) => (

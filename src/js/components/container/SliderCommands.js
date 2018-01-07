@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import SliderAction from "../presentational/SliderAction";
+import { comic } from "../config/config";
+
 const path = require("path");
 class SliderCommands extends Component {
   constructor() {
@@ -11,7 +13,6 @@ class SliderCommands extends Component {
       lastPosition: null,
       func: null
     };
-
 
     this.next     = this.next.bind(this);
     this.previous = this.previous.bind(this);
@@ -36,7 +37,7 @@ class SliderCommands extends Component {
 
   goLast(){
     let pos = this.state.position;
-    this.setState({ position: 9999}, this.updatePosition)
+    this.setState({ position: this.state.lastPosition}, this.updatePosition)
   }
 
   updatePosition(){
@@ -65,10 +66,14 @@ class SliderCommands extends Component {
     ];
   }
 
+
   componentDidMount(){
     this.func = (this.props.func)? this.props.func : ()=> false;
-     // console.log(this.props)
-      // TODO: fetch to get last position
+    fetch(comic, {method:"get"})
+      .then(comicData => comicData.json())
+      .then(res => {
+        this.setState({lastPosition: res.totalResults});
+    });
   }
   
   render() {

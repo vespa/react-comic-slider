@@ -8,7 +8,8 @@ class SliderContainer extends Component {
   constructor() {
     super();
     this.state = {
-      currentImage: "none",
+      currentImage: "",
+      currentURL : null,
       alt:"",
       title:""
     };
@@ -25,7 +26,6 @@ class SliderContainer extends Component {
       alt: 'alt'
     });
   }
-
 
   changeImage(pos){
     console.log(pos)
