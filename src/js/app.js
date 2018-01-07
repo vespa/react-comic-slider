@@ -1,2 +1,2 @@
    import '../css/main.scss'
-   import FormContainer from "./components/container/SliderContainer";
+   import Container from "./components/container/SliderContainer";
