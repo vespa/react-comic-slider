@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 
 
-const PrintImage = (props) => {
-  return (props.imageOn === 'none')? 'Loading...' : <img src={props.imageOn} alt={props.alt} title={props.title} />
+const PrintImage = ({imageOn, alt, title}) => {
+  return (imageOn === 'none')? 'Loading...' : <img src={imageOn} alt={alt} title={title} />
 }
 
 const SlidePicture = ({ currentImage, alt, title}) => (

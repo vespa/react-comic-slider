@@ -8,37 +8,42 @@ class SliderCommands extends Component {
 
     this.state = {
       position: 0,
-      lastPosition: null
+      lastPosition: null,
+      func: null
     };
-    
+
+
     this.next     = this.next.bind(this);
     this.previous = this.previous.bind(this);
     this.goFirst  = this.goFirst.bind(this);
     this.goLast   = this.goLast.bind(this);
-
+    this.updatePosition   = this.updatePosition.bind(this);
   }
 
   next(){
     let pos = this.state.position;
-    this.setState({ position: pos+1})
+    this.setState({ position: pos+1},this.updatePosition);
   }
 
   previous(){
     let pos = this.state.position;
-    this.setState({ position:  (pos <= 0)? 0: pos-1})
+    this.setState({ position:  (pos <= 0)? 0: pos-1}, this.updatePosition)
   }
 
   goFirst(){
-     this.setState({ position: 0})
+     this.setState({ position: 0}, this.updatePosition);
   }
 
   goLast(){
     let pos = this.state.position;
-    this.setState({ position: 9999})
+    this.setState({ position: 9999}, this.updatePosition)
+  }
+
+  updatePosition(){
+    this.func(this.state.position);
   }
 
   createButtons(){
-    // TODO: convert the string in var to make easier to translate to other languages
     return [
       {
         text: "primeira",
@@ -61,6 +66,8 @@ class SliderCommands extends Component {
   }
 
   componentDidMount(){
+    this.func = (this.props.func)? this.props.func : ()=> false;
+     // console.log(this.props)
       // TODO: fetch to get last position
   }
   

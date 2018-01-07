@@ -12,6 +12,7 @@ class SliderContainer extends Component {
       alt:"",
       title:""
     };
+    this.changeImage = this.changeImage.bind(this);
   }
 
   componentDidMount(){
@@ -25,11 +26,17 @@ class SliderContainer extends Component {
     });
   }
 
+
+  changeImage(pos){
+    console.log(pos)
+  }
+
+
   render() {
     const { currentImage, title, alt } = this.state;
     return (
       <div className="slider">
-        <SliderCommands />
+        <SliderCommands func={this.changeImage} />
         <Slider 
           currentImage = {currentImage}
           title = {title}

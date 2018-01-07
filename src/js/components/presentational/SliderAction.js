@@ -8,9 +8,8 @@ const SliderAction = ({text, action}) => (
 );
 
 SliderAction.propTypes = {
-    text: PropTypes.string.isRequired,
-    action: PropTypes.func.isRequired,
-
+   text: PropTypes.string.isRequired,
+   action: PropTypes.func.isRequired
 }
 
 export default SliderAction;
