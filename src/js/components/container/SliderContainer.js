@@ -14,9 +14,13 @@ class SliderContainer extends Component {
       position:0,
       lastPosition: 0,
       alt:"",
-      title:""
+      title:"",
+      description:"",
+      authors: []
+
     };
-    this.changeImage = this.changeImage.bind(this);
+    this.updateImage = this.updateImage.bind(this);
+    this.updateImageFromURL = this.updateImageFromURL.bind(this);
   }
 
   getAPI(){
@@ -30,16 +34,19 @@ class SliderContainer extends Component {
     this.setState ({ 
       position: data.id,
       currentImage: data.uri,
-      alt: data.description
+      alt: data.description,
+      title: data.title,
+      description: data.description,
+      authors: data.authors
     });
   }
 
-  updateImage(){
+  updateImageFromURL(){
     const currentURL = UrlManager.checkCurrentURL().get("currentURL");
     let data;
     if(currentURL ==="/" || currentURL ===""){
       this.getAPI().then(res=>{
-        data = res.results[res.length-1];
+        data = res.results[res.results.length-1];
         this.setImageData(data);
       });
     } else {
@@ -57,29 +64,33 @@ class SliderContainer extends Component {
   }
 
   componentDidMount(){
-    this.updateImage();
+    this.updateImageFromURL();
+    UrlManager.onpopstate(this.updateImageFromURL);
     this.getAPI().then(res=>{
       this.setState({ lastPosition: res.totalResults})
     })
   }
 
-  changeImage(pos){
+  updateImage(pos){
     let data;
     this.setState({position: pos});
       this.getAPI().then(res=>{
         data = res.results.filter(item => item.id === pos);
         data = (data.length > 0)? data[0] :  false
-        if(data!==false) this.setImageData(data);
+        if(data ===false) return false;
+        this.setImageData(data);
+        UrlManager.callURL(data);
+
       });
   }
 
 
   render() {
-    const { position, currentImage, title, alt, lastPosition } = this.state;
+    const { position, currentImage, authors,title, alt, lastPosition, description } = this.state;
     return (
       <div className="slider">
         <SliderCommands 
-            func={this.changeImage} 
+            func={this.updateImage} 
             position={position} 
             lastPosition={lastPosition} 
         />
@@ -87,6 +98,8 @@ class SliderContainer extends Component {
           currentImage = {currentImage}
           title = {title}
           alt = {alt}
+          description = {description}
+          authors = {authors}
         />
       </div>
     );

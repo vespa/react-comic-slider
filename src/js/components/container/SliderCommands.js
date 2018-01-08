@@ -68,18 +68,6 @@ class SliderCommands extends Component {
 
   componentDidMount(){
     this.func = (this.props.func)? this.props.func : ()=> false;
-    setTimeout(()=>{
-        console.log(this.props)
-    },1000);
-    
-    //this.setState({position: this.props.position});
-    // fetch(comicAPI, {method:"get"})
-    // .then(comicData => comicData.json())
-    // .then(res => {
-    //   this.setState({lastPosition: res.totalResults});
-    //   this.func(this.state.lastPosition);
-      
-    // });
   }
   
   render() {

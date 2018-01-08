@@ -1,9 +1,17 @@
 
 const URLManager = ((window, location) =>{
     const obj = {};
+    window.addEventListener('popstate', (e)=>{
+        e.preventDefault();
+        obj.executeOnPopstate.map(item =>{
+            item();
+        });
+    });
+
     const data = ()=>{
         return {
-            currentURL: "/"
+            currentURL: "/",
+            executeOnPopstate: []
         }
     };
     const getAndSetter = (obj)=>{
@@ -15,6 +23,10 @@ const URLManager = ((window, location) =>{
                 obj[name] = value;
                 return obj;
             },
+            "onpopstate" : (func)=>{
+                if(func.constructor !== Function) throw Error('cannot add a non-function to \"onpopstate\" ')
+                obj.executeOnPopstate.push(func);
+            }
         }
     }
 
@@ -29,8 +41,8 @@ const URLManager = ((window, location) =>{
 
     const callURL = (obj) =>{
         return {
-            "callURL" : ({title, url})=>{
-                window.history.pushState({"html":"","pageTitle":title},"", url);
+            "callURL" : ({title, slug})=>{
+                window.history.pushState({"html":"","pageTitle":title}, title, slug);
                 return obj;
             }
         }
