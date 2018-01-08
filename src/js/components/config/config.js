@@ -1,6 +1,6 @@
 import comic from '../../../js/dataModel/comic.json';
 
 var fakeApi = {
-	"comic" :comic
+	"comicAPI" :comic
 }
 module.exports = fakeApi;

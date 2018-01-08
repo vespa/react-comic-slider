@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import SliderAction from "../presentational/SliderAction";
-import { comic } from "../config/config";
+import { comicAPI } from "../config/config";
 
 const path = require("path");
 class SliderCommands extends Component {
@@ -9,9 +9,8 @@ class SliderCommands extends Component {
     super();
 
     this.state = {
-      position: 0,
-      lastPosition: null,
-      func: null
+      func: null,
+      position:0
     };
 
     this.next     = this.next.bind(this);
@@ -22,22 +21,23 @@ class SliderCommands extends Component {
   }
 
   next(){
-    let pos = this.state.position;
-    this.setState({ position: pos+1},this.updatePosition);
+    let pos = this.props.position;
+    let lastPosition = this.props.lastPosition;
+    pos = (pos >= lastPosition)? lastPosition: pos+1;
+    this.setState({ position: pos}, this.updatePosition);
   }
 
   previous(){
-    let pos = this.state.position;
+    let pos = this.props.position;
     this.setState({ position:  (pos <= 0)? 0: pos-1}, this.updatePosition)
   }
 
-  goFirst(){
-     this.setState({ position: 0}, this.updatePosition);
+  goLast(){
+    this.setState({ position: 0}, this.updatePosition);
   }
 
-  goLast(){
-    let pos = this.state.position;
-    this.setState({ position: this.state.lastPosition}, this.updatePosition)
+  goFirst(){
+    this.setState({ position: this.props.lastPosition}, this.updatePosition)
   }
 
   updatePosition(){
@@ -66,14 +66,20 @@ class SliderCommands extends Component {
     ];
   }
 
-
   componentDidMount(){
     this.func = (this.props.func)? this.props.func : ()=> false;
-    fetch(comic, {method:"get"})
-      .then(comicData => comicData.json())
-      .then(res => {
-        this.setState({lastPosition: res.totalResults});
-    });
+    setTimeout(()=>{
+        console.log(this.props)
+    },1000);
+    
+    //this.setState({position: this.props.position});
+    // fetch(comicAPI, {method:"get"})
+    // .then(comicData => comicData.json())
+    // .then(res => {
+    //   this.setState({lastPosition: res.totalResults});
+    //   this.func(this.state.lastPosition);
+      
+    // });
   }
   
   render() {
@@ -82,7 +88,7 @@ class SliderCommands extends Component {
     let counter = 0;
        return (
       <div>
-      <span> {position} </span>
+      <div> {position} </div>
         {commands.map(( { text, action } ) =>
           <SliderAction text={text} key={counter++} action={action}/>
         )}
