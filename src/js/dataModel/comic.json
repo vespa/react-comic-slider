@@ -16,11 +16,11 @@
             "authors":[
                 {
                     "name":"author 1",
-                    "description":"author 1"
+                    "description":"desenhista"
                 },
                 {
                     "name":"author 2",
-                    "description":"author 2"
+                    "description":"texto"
                 }
             ],
             "pages":[
