@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import Slider from "../presentational/Slider";
+import Slider from "presentational/Slider";
 import SliderCommands from "./SliderCommands";
-import UrlManager from "../../libs/URLManager";
-import { comicAPI } from "../config/config";
+import UrlManager from "libs/URLManager";
+import { comicAPI } from "config/config";
 
 class SliderContainer extends Component {
 
@@ -105,7 +105,4 @@ class SliderContainer extends Component {
     );
   }
 }
-
-const wrapper = document.getElementById("slider-container");
-wrapper ? ReactDOM.render(<SliderContainer />, wrapper) : false;
 export default SliderContainer;

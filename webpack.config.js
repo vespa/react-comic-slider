@@ -9,7 +9,15 @@ module.exports = {
   },
   devServer: {
     contentBase: "./dist",
-    historyApiFallback: true
+    historyApiFallback: true,
+  },
+  resolve:{
+      alias:{
+        container: path.resolve(__dirname, "src/js/components/container/"),
+        presentational: path.resolve(__dirname, "src/js/components/presentational/"),
+        config: path.resolve(__dirname, "src/js/components/config/"),
+        libs: path.resolve(__dirname, "src/js/libs/"),
+      }
   },
   module: {
     rules: [

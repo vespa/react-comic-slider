@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
-import SliderAction from "../presentational/SliderAction";
-import { comicAPI } from "../config/config";
+
+import SliderAction from "presentational/SliderAction";
+import { comicAPI } from "config/config";
 
 const path = require("path");
 class SliderCommands extends Component {
