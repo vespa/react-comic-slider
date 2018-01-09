@@ -1,2 +1,2 @@
 # react-comic-slider
-just a slide to see comic strips
+just a slider to see comic strips
