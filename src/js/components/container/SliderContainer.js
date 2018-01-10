@@ -84,12 +84,12 @@ class SliderContainer extends Component {
 
       });
   }
-
+  
 
   render() {
     const { position, currentImage, authors,title, alt, lastPosition, description } = this.state;
     return (
-      <div className="slider">
+      <div className={this.props.className+" slider"}>
         <SliderCommands 
             func={this.updateImage} 
             position={position} 

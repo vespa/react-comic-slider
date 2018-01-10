@@ -5,6 +5,38 @@
   font-size:$fontBase;
   font-family: arial, verdana, tahoma;
 }
-html, body, .slider-container, .slider {
-  height:100%;
+ body, html, #root{
+    height:100%;
+ }
+
+
+.app{
+    @include flexbox(row wrap);
+    flex-direction: row wrap;
+    max-width:75rem;
+    margin: 0 auto;
+    &__item{
+        flex: 1 100%;
+        border: 1px solid black;
+        margin:0.25rem;
+        padding:0.5rem;
+        border-radius: 0.5rem;
+    }
+    &__header{
+       height: 3rem;
+    }
+    &__body{
+        flex:4 0px;
+         order:2
+    }
+    &__side{
+        flex:1 auto;
+        &--right{
+            order:3
+        }
+        &--left{
+            order:1
+        }
+        
+    }
 }

@@ -1,24 +1,46 @@
 
-div[class^='slider']{
-    height: 100%;
-}
-.slider {
+
+
+
+.slider{
     box-sizing: border-box;
     * {
        box-sizing: border-box; 
-    }
+    } 
     &__body{
-        padding: 0.5rem;
-        width:40rem;
-        border: 1px solid black;
         overflow: auto;
+        //height:100%;
     }
     &__picture{
         width:100%;
-        height: auto;
         img {
+            border:1px solid;
             width: inherit;
             height: auto;
+
         }
     }
 }
+// div[class^='slider']{
+//     height: 100%;
+// }
+// .slider {
+//     box-sizing: border-box;
+//     * {
+//        box-sizing: border-box; 
+//     }
+//     &__body{
+//         padding: 0.5rem;
+//         width:40rem;
+//         border: 1px solid black;
+//         overflow: auto;
+//     }
+//     &__picture{
+//         width:100%;
+//         height: auto;
+//         img {
+//             width: inherit;
+//             height: auto;
+//         }
+//     }
+// }
