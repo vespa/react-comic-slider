@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 const PrintImage = ({imageOn, alt, title}) => {
   return (imageOn === "")? 'Loading...' : <img src={imageOn} alt={alt} title={title} />
 }
+
 let counter = 0;
 const SlidePicture = ({ currentImage, alt, title, description, authors}) => (
   <div className="slider__body">

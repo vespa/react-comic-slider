@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "updateSnapshot": "jest --updateSnapshot",
     "start": "webpack-dev-server --open",
     "build": "webpack"
   },
@@ -23,6 +24,11 @@
       "js",
       "jsx"
     ],
+    "collectCoverage": true,
+    "collectCoverageFrom" :[
+      "**/src/js/components/**/**.{js,jsx}"
+    ],
+    "verbose": true,
     "moduleNameMapper": {
       "^container/(.*)": "<rootDir>/src/js/components/container/$1",
       "^presentational/(.*)": "<rootDir>/src/js/components/presentational/$1",
