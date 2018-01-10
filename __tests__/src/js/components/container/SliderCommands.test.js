@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import {configure, shallow, mount} from 'enzyme';
+
 import SliderCommands from "container/SliderCommands";
 import SliderAction from "presentational/SliderAction";
 import Adapter from 'enzyme-adapter-react-16';

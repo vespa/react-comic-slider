@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import "isomorphic-fetch"
 import Slider from "presentational/Slider";
 import SliderCommands from "./SliderCommands";
 import UrlManager from "libs/URLManager";
