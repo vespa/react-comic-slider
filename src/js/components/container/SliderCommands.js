@@ -10,11 +10,11 @@ class SliderCommands extends Component {
 
     this.state = {
       func: null,
-      position:0
+      position: 0
     };
 
     this.next     = this.next.bind(this);
-    this.previous = this.previous.bind(this);
+    this.goPrevious = this.goPrevious.bind(this);
     this.goFirst  = this.goFirst.bind(this);
     this.goLast   = this.goLast.bind(this);
     this.updatePosition   = this.updatePosition.bind(this);
@@ -27,7 +27,7 @@ class SliderCommands extends Component {
     this.setState({ position: pos}, this.updatePosition);
   }
 
-  previous(){
+  goPrevious(){
     let pos = this.props.position;
     this.setState({ position:  (pos <= 0)? 0: pos-1}, this.updatePosition)
   }
@@ -57,7 +57,7 @@ class SliderCommands extends Component {
       },
       {
         text: "anterior",
-        action : this.previous 
+        action : this.goPrevious 
       },
       {
         text: "última",
@@ -65,21 +65,22 @@ class SliderCommands extends Component {
       },
     ];
   }
-
-  componentDidMount(){
+  setCallback(){
     this.func = (this.props.func)? this.props.func : ()=> false;
+  }
+  componentDidMount(){
+    this.setCallback();
   }
   
   render() {
-    const commands = this.createButtons();
     const {position} = this.state;
     let counter = 0;
        return (
       <div>
-      <div> {position} </div>
-        {commands.map(( { text, action } ) =>
-          <SliderAction text={text} key={counter++} action={action}/>
-        )}
+        <div> {position} </div>
+          {this.createButtons().map(( { text, action } ) =>
+            <SliderAction text={text} key={counter++} action={action}/>
+          )}
       </div>
     );
   }
