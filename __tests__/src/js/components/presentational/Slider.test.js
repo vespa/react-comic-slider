@@ -26,10 +26,11 @@ describe("Slider", ()=>{
             title = 'titulo'
             alt = 'alt'
             description = 'description'
-            authors = {[{name:'name', description:'description'}]}
           />
     );
    let tree = component.toJSON();
    expect(tree).toMatchSnapshot();
+
+
   });
 });

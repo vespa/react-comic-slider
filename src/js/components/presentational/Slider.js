@@ -7,7 +7,7 @@ const PrintImage = ({imageOn, alt, title}) => {
 }
 
 let counter = 0;
-const SlidePicture = ({ currentImage, alt, title, description, authors}) => (
+const SlidePicture = ({ currentImage, alt, title, description, authors=[]}) => (
   <div className="slider__body">
     <h1>{title}</h1>
     <figure className="slider__picture">
@@ -23,10 +23,10 @@ const SlidePicture = ({ currentImage, alt, title, description, authors}) => (
 );
 
 SlidePicture.propTypes = {
-    alt: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    currentImage: PropTypes.string.isRequired,
-    authors: PropTypes.array.isRequired
+    //alt: PropTypes.string.isRequired,
+   // title: PropTypes.string.isRequired,
+    //currentImage: PropTypes.string.isRequired,
+   //authors: PropTypes.array.isRequired
 }
 
 export default SlidePicture;
